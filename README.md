@@ -1,1 +1,1 @@
-Repositório com conteúdo referente às aulas de Linguagem de Programação Orientada a Objetos.
+Repositório com conteúdo referente à disciplina: Linguagem de Programação Orientada a Objetos.
