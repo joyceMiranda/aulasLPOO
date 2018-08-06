@@ -1,4 +1,4 @@
-package sintaxeBasica;
+package sintaxebasica;
 
 import java.text.DecimalFormat;
 

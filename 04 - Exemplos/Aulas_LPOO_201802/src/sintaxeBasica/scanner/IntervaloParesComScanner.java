@@ -1,4 +1,4 @@
-package sintaxeBasica.scanner;
+package sintaxebasica.scanner;
 
 import java.util.Scanner;
 

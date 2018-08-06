@@ -1,8 +1,8 @@
-package sintaxeBasica.joptionPane;
+package sintaxebasica.joptionpane;
 
 import javax.swing.JOptionPane;
 
-public class IntervaloParesComJoptionPane {
+public class IntervaloParesComJoptionpane {
 
     public static void main(String[] args) {
         

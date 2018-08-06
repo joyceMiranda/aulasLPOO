@@ -1,4 +1,4 @@
-package sintaxeBasica;
+package sintaxebasica;
 
 public class IntervaloPares {
 
