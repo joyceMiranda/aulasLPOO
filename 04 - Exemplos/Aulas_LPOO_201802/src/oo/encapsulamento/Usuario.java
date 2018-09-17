@@ -55,6 +55,11 @@ public class Usuario {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return this.codigo + "-" + this.nome ; //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

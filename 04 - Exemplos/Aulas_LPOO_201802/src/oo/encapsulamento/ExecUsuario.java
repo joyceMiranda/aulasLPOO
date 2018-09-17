@@ -24,20 +24,22 @@ public class ExecUsuario {
 
 */
         Scanner in = new Scanner(System.in);
-        Usuario[] listaUsuarios = new Usuario[5];
+        System.out.println("Informe a quantidade máxima de usuários: ");
+        int qtde = in.nextInt();
+        Usuario[] listaUsuarios = new Usuario[qtde];       
                 
         for (int i = 0; i < listaUsuarios.length; i++) {
             System.out.println("Informe o código: ");
             int codigo = in.nextInt();
             System.out.println("Informe o nome: ");
-            String nome = in.nextLine();
+            String nome = in.next();
             System.out.println("Informe a quantidade máxima de amigos: ");
-            int qtde = in.nextInt();
+            qtde = in.nextInt();
             
             String[] amigos = new String[qtde];
             for (int j = 0; j < qtde; j++) {
                 System.out.println("Informe o nome do amigo:");
-                String nomeAmigo = in.nextLine();
+                String nomeAmigo = in.next();
                 amigos[j] = nomeAmigo;
             }
             
@@ -46,6 +48,14 @@ public class ExecUsuario {
             
             listaUsuarios[i] = user;            
             
+        }
+        
+        for (Usuario usuario : listaUsuarios) {
+            System.out.println("+User: " + usuario);
+            System.out.println("Amigos:");
+            for (String amigo : usuario.getAmigos()) {
+                System.out.println("->" + amigo);
+            }
         }
         
     }  
