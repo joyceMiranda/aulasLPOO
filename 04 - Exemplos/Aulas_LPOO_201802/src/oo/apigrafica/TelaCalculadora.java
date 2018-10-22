@@ -1,4 +1,4 @@
-package oo.apigrafica;
+package oo.apiGrafica;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
