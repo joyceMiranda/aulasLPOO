@@ -8,7 +8,7 @@ public class ReadingObjectFromDisk {
          try {
             //Carregando arquivo
             FileInputStream file = 
-                    new FileInputStream("C:\\ObjetosJava\\alunos.dat");
+                    new FileInputStream("C:\\ObjetosJava\\alunos2.dat");
             while (file.available() > 0){
                 //Classe responsavel por recuperar o objeto
                 ObjectInputStream ois = new ObjectInputStream(file);

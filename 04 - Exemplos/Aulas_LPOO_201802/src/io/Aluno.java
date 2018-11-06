@@ -1,20 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package io;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author joyce.miranda
- */
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
     
     private String matricula;
     private String nome;
+    
+    public Aluno(){}
 
     public Aluno(String matricula, String nome) {
         this.matricula = matricula;
@@ -41,8 +41,34 @@ public class Aluno implements Serializable{
     public String toString() {
         return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + '}';
     }
-
     
+    public boolean salvar(String file){
+     try{
+      FileOutputStream fos = new FileOutputStream(file, true);
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+      oos.writeObject(this);
+      return true;
+     }catch(IOException ex){
+      System.out.println("Erro:"+ex.getMessage());
+      return false;
+     }
+    }
+    
+    public List<Aluno> listar(String file){
+       try {
+        FileInputStream fis = new FileInputStream(file);
+        List<Aluno> listaAlunos = new ArrayList();
+        while(fis.available() > 0){
+          ObjectInputStream ois = new ObjectInputStream(fis);
+          listaAlunos.add((Aluno) ois.readObject());
+        }
+        return listaAlunos;    
+       } catch (IOException | ClassNotFoundException ex) {
+         System.out.println("Erro:"+ex.getMessage());
+         return null;
+       } 
+    }
+
     
     
     

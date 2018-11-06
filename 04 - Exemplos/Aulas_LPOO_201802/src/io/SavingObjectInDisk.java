@@ -9,7 +9,7 @@ public class SavingObjectInDisk {
         try {
             //Gerando arquivo para armazenar objeto
             FileOutputStream file = 
-                    new FileOutputStream("C:\\ObjetosJava\\alunos.dat", true);
+                    new FileOutputStream("C:\\ObjetosJava\\alunos2.dat", true);
             //Classe responsavel por inserir o objeto
             ObjectOutputStream oos = new ObjectOutputStream(file);
             //gravando objeto no arquivo
