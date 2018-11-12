@@ -1,4 +1,4 @@
-package io;
+package arquivos;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -42,7 +42,7 @@ public class Aluno implements Serializable {
         return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + '}';
     }
     
-    public boolean salvar(String file){
+    public boolean save(String file){
      try{
       FileOutputStream fos = new FileOutputStream(file, true);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -54,7 +54,7 @@ public class Aluno implements Serializable {
      }
     }
     
-    public List<Aluno> listar(String file){
+    public List<Aluno> show(String file){
        try {
         FileInputStream fis = new FileInputStream(file);
         List<Aluno> listaAlunos = new ArrayList();

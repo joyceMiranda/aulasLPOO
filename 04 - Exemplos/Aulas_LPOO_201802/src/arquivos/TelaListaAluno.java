@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io;
+package arquivos;
 
 import java.util.List;
 import java.util.Vector;
@@ -24,28 +24,22 @@ public class TelaListaAluno extends javax.swing.JFrame {
     }
     
     private void carregaTabelaAlunos(){
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Matrícula");
+        model.addColumn("Nome");
+        
         Aluno aluno = new Aluno();
         List<Aluno> listaAlunos = 
-                aluno.listar("C:\\ObjetosJava\\listaAlunos.dat");
-        
-        Vector conjuntoLinhas = new Vector();
+                aluno.show("C:\\ObjetosJava\\listaAlunos.dat");
         
         for (Aluno al : listaAlunos) {
-            Vector linha = new Vector();
-            linha.add(al.getMatricula());
-            linha.add(al.getNome());
-            
-            conjuntoLinhas.add(linha);
+           model.addRow(new String[]{
+                            al.getMatricula(),
+                            al.getNome(),
+           });
         }
         
-        Vector conjuntoColunas = new Vector();
-        conjuntoColunas.add("Matrícula");
-        conjuntoColunas.add("Nome");
-        
-        DefaultTableModel modelo =
-        new DefaultTableModel(
-                conjuntoLinhas, conjuntoColunas);
-        tblAlunos.setModel(modelo);
+        tblAlunos.setModel(model);
         
     }
 

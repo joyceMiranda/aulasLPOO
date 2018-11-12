@@ -1,4 +1,4 @@
-package io;
+package arquivos;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;

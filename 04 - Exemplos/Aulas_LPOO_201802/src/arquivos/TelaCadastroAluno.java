@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io;
+package arquivos;
 
 import javax.swing.JOptionPane;
 
@@ -116,7 +116,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         String nome = txtNome.getText();
         Aluno aluno = new Aluno(matricula, nome);
         boolean ok = 
-                aluno.salvar("C:\\ObjetosJava\\listaAlunos.dat");
+                aluno.save("C:\\ObjetosJava\\listaAlunos.dat");
         if(ok){
             JOptionPane.showMessageDialog(null, "Cadastro OK!");
         }else{
