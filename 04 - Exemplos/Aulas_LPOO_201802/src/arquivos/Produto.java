@@ -3,7 +3,6 @@ package arquivos;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -11,71 +10,88 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Produto implements Serializable{
-    
     private int codigo;
     private String nome;
     private double valor;
 
-    public Produto(){}
-    
+    public Produto() {}
+
     public Produto(int codigo, String nome, double valor) {
         this.codigo = codigo;
         this.nome = nome;
         this.valor = valor;
     }
-    
-     public boolean save(String file){
-     try{
-      List<Produto> listaProdutos = new ArrayList();
-      File arq = new File(file);
-      if(!arq.exists() || !arq.isFile()){
-          listaProdutos.add(this); 
-      }else{
-          //carregando arquivo
-          FileInputStream fis = new FileInputStream(arq);
-          ObjectInputStream ois = new ObjectInputStream(fis);
-          listaProdutos = (List<Produto>) ois.readObject();
-          //atualiza a lista
-          listaProdutos.add(this); 
-          ois.close();
-          fis.close();
-      }
-      
-      FileOutputStream fos = new FileOutputStream(arq);
-      ObjectOutputStream oos = new ObjectOutputStream(fos);
-      oos.writeObject(listaProdutos);
 
-      return true;         
-     
-     }catch(Exception ex){
-      System.out.println("Erro:"+ex.getMessage());
-      return false;
-     }
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
     
-    public List<Produto> show(String file){
-       try {
-        List<Produto> listaProdutos = new ArrayList();
-        File arq = new File(file);
-        if(!arq.exists() && !arq.isFile()){
-          return null;    
-        }else{
-            FileInputStream fis = new FileInputStream(arq);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            listaProdutos = (List<Produto>) ois.readObject();
-            ois.close();
-            fis.close();
-        }
-        return listaProdutos; 
-       }catch (IOException | ClassNotFoundException ex) {
-         System.out.println("Erro:"+ex.getMessage());
-         return null;
-       } 
-    }
+    
 
     @Override
     public String toString() {
-        return "Produto{" + "nome=" + nome + ", valor=" + valor + '}';
+        return "Produto{" + "codigo=" + codigo + ", nome=" + nome + ", valor=" + valor + '}';
     }
+    
+    public boolean save(String arq){
+        try {
+            //recuperando..
+            List<Produto> listaProdutos = this.show(arq);
+            listaProdutos.add(this);            
+            //salvando...
+            FileOutputStream fos = new FileOutputStream(arq);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(listaProdutos);            
+            return true;
+         } catch (Exception ex) {
+                System.out.println("erro save: " + ex.toString());
+                return false;
+         }
+    }
+    
+    public List<Produto> show(String arq){
+        try{
+           File file = new File(arq);
+           List<Produto> listaProdutos = new ArrayList();
+           if(file.exists()){
+            //recuperando lista do disco
+            //para atualizacao...
+            FileInputStream fis = new
+                FileInputStream(file);
+            ObjectInputStream ois =
+                new ObjectInputStream(fis);
+            listaProdutos = (List<Produto>) ois.readObject();
+           }
+           return listaProdutos;
+        }catch(Exception ex){
+            System.out.println("erro show: " + ex.toString());
+            return null;
+        }
+    }
+    
+    
+    
+    
+    
     
 }
